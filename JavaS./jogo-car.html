@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Jogo de Carro com Buzina</title>
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+      background: #222;
+    }
+    canvas {
+      display: block;
+      margin: 0 auto;
+      background: #444;
+      border: 2px solid #fff;
+    }
+    #gameOver {
+      position: absolute;
+      top: 40%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 48px;
+      color: red;
+      display: none;
+      font-family: sans-serif;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="gameCanvas" width="400" height="600"></canvas>
+  <div id="gameOver">💥 Game Over!</div>
+
+  <script>
+    const canvas = document.getElementById("gameCanvas");
+    const ctx = canvas.getContext("2d");
+
+    const car = {
+      x: 180,
+      y: 500,
+      width: 40,
+      height: 80,
+      color: "blue",
+      speed: 10
+    };
+
+    const obstacles = [];
+    let gameRunning = true;
+
+    // 🔊 Som de buzina local
+    const buzina = new Audio("buzina.mp3");
+    buzina.volume = 1.0;
+
+    function createObstacle() {
+      const obs = {
+        x: Math.random() * (canvas.width - 40),
+        y: -80,
+        width: 40,
+        height: 80,
+        color: "red",
+        speed: 4
+      };
+      obstacles.push(obs);
+    }
+
+    function drawCar() {
+      ctx.fillStyle = car.color;
+      ctx.fillRect(car.x, car.y, car.width, car.height);
+    }
+
+    function drawObstacles() {
+      obstacles.forEach(obs => {
+        ctx.fillStyle = obs.color;
+        ctx.fillRect(obs.x, obs.y, obs.width, obs.height);
+      });
+    }
+
+    function moveObstacles() {
+      obstacles.forEach(obs => {
+        obs.y += obs.speed;
+      });
+    }
+
+    function checkCollision() {
+      obstacles.forEach(obs => {
+        if (
+          car.x < obs.x + obs.width &&
+          car.x + car.width > obs.x &&
+          car.y < obs.y + obs.height &&
+          car.y + car.height > obs.y
+        ) {
+          gameRunning = false;
+          document.getElementById("gameOver").style.display = "block";
+        }
+      });
+    }
+
+    function update() {
+      if (!gameRunning) return;
+
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      drawCar();
+      drawObstacles();
+      moveObstacles();
+      checkCollision();
+
+      requestAnimationFrame(update);
+    }
+
+    setInterval(() => {
+      if (gameRunning) createObstacle();
+    }, 1500);
+
+    document.addEventListener("keydown", (e) => {
+      if (!gameRunning) return;
+      if (e.key === "ArrowLeft" && car.x > 0) {
+        car.x -= car.speed;
+      }
+      if (e.key === "ArrowRight" && car.x + car.width < canvas.width) {
+        car.x += car.speed;
+      }
+      if (e.key.toLowerCase() === "b") {
+        buzina.currentTime = 0;
+        buzina.play().catch(err => console.log("Erro ao tocar buzina:", err));
+      }
+    });
+
+    update();
+  </script>
+</body>
+</html>
