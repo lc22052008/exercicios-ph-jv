@@ -29,7 +29,7 @@
 </head>
 <body>
   <canvas id="gameCanvas" width="400" height="600"></canvas>
-  <div id="gameOver">💥 Game Over!</div>
+  <div id="gameOver">💥 Fim de Jogo!<p></p><a>Reinicie o jogo com F5</a></div>
 
   <script>
     const canvas = document.getElementById("gameCanvas");
@@ -47,8 +47,8 @@
     const obstacles = [];
     let gameRunning = true;
 
-    // 🔊 Som de buzina local
-    const buzina = new Audio("buzina.mp3");
+    // 🔊 Nova buzina
+    const buzina = new Audio("buzina.Mp3.mp3");
     buzina.volume = 1.0;
 
     function createObstacle() {
@@ -64,14 +64,41 @@
     }
 
     function drawCar() {
+      // Corpo
       ctx.fillStyle = car.color;
       ctx.fillRect(car.x, car.y, car.width, car.height);
+
+      // Janelas
+      ctx.fillStyle = "lightblue";
+      ctx.fillRect(car.x + 5, car.y + 10, car.width - 10, 20);
+
+      // Faróis
+      ctx.fillStyle = "yellow";
+      ctx.fillRect(car.x + 5, car.y + car.height - 10, 10, 5);
+      ctx.fillRect(car.x + car.width - 15, car.y + car.height - 10, 10, 5);
+
+      // Rodas
+      ctx.fillStyle = "black";
+      ctx.beginPath();
+      ctx.arc(car.x + 8, car.y + car.height, 6, 0, Math.PI * 2);
+      ctx.arc(car.x + car.width - 8, car.y + car.height, 6, 0, Math.PI * 2);
+      ctx.fill();
     }
 
     function drawObstacles() {
       obstacles.forEach(obs => {
+        // Corpo
         ctx.fillStyle = obs.color;
         ctx.fillRect(obs.x, obs.y, obs.width, obs.height);
+
+        // Janela
+        ctx.fillStyle = "gray";
+        ctx.fillRect(obs.x + 5, obs.y + 10, obs.width - 10, 20);
+
+        // Faróis
+        ctx.fillStyle = "white";
+        ctx.fillRect(obs.x + 5, obs.y + obs.height - 10, 10, 5);
+        ctx.fillRect(obs.x + obs.width - 15, obs.y + obs.height - 10, 10, 5);
       });
     }
 
