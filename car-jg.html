@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <title>Carro 3D</title>
+  <title>Carro 3D com Som</title>
   <style>
     body {
       margin: 0;
@@ -22,7 +22,12 @@
   </style>
 </head>
 <body>
-  <div id="gameOver">💥 Game Over!</div>
+  <div id="gameOver">💥 Game Over!<p></p><a>Reinicie o jogo com F5</a></div>
+
+  <!-- Áudios -->
+  <audio id="buzina" src="buzina.Mp3.mp3"></audio>
+  <audio id="fundo" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" loop></audio>
+
   <script src="https://cdn.jsdelivr.net/npm/three@0.152.2/build/three.min.js"></script>
   <script>
     let scene, camera, renderer;
@@ -43,11 +48,36 @@
       renderer.setSize(window.innerWidth, window.innerHeight);
       document.body.appendChild(renderer.domElement);
 
-      // Carro
-      const carGeometry = new THREE.BoxGeometry(1, 1, 2);
-      const carMaterial = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
-      car = new THREE.Mesh(carGeometry, carMaterial);
-      car.position.y = 0.5;
+      // Carro com formato
+      const corpo = new THREE.Mesh(
+        new THREE.BoxGeometry(2, 1, 4),
+        new THREE.MeshBasicMaterial({ color: 0x00ff00 })
+      );
+      corpo.position.y = 0.5;
+
+      const cabine = new THREE.Mesh(
+        new THREE.BoxGeometry(1.5, 1, 2),
+        new THREE.MeshBasicMaterial({ color: 0x007700 })
+      );
+      cabine.position.set(0, 1, 0.5);
+
+      function criarRoda(x, z) {
+        const roda = new THREE.Mesh(
+          new THREE.CylinderGeometry(0.4, 0.4, 0.3, 32),
+          new THREE.MeshBasicMaterial({ color: 0x000000 })
+        );
+        roda.rotation.z = Math.PI / 2;
+        roda.position.set(x, 0.2, z);
+        return roda;
+      }
+
+      car = new THREE.Group();
+      car.add(corpo);
+      car.add(cabine);
+      car.add(criarRoda(-0.8, -1.5));
+      car.add(criarRoda(0.8, -1.5));
+      car.add(criarRoda(-0.8, 1.5));
+      car.add(criarRoda(0.8, 1.5));
       scene.add(car);
 
       // Chão
@@ -73,11 +103,24 @@
         obstacles.push(obs);
       }, 1500);
 
+      // Inicia som de fundo após primeira interação
+      document.addEventListener("keydown", () => {
+        const fundo = document.getElementById("fundo");
+        if (fundo.paused) {
+          fundo.play().catch(() => {
+            console.log("Autoplay bloqueado, som será iniciado após interação.");
+          });
+        }
+      }, { once: true });
+
       // Controles
       document.addEventListener("keydown", (e) => {
         if (!gameRunning) return;
         if (e.key === "ArrowLeft" && car.position.x > -9) car.position.x -= 1;
         if (e.key === "ArrowRight" && car.position.x < 9) car.position.x += 1;
+        if (e.key.toLowerCase() === "b") {
+          document.getElementById("buzina").play();
+        }
       });
     }
 
@@ -89,13 +132,13 @@
       obstacles.forEach(obs => {
         obs.position.z += 0.5;
 
-        // Colisão
         if (
           Math.abs(obs.position.z - car.position.z) < 1.5 &&
           Math.abs(obs.position.x - car.position.x) < 1
         ) {
           gameRunning = false;
           document.getElementById("gameOver").style.display = "block";
+          document.getElementById("fundo").pause();
         }
       });
 
