@@ -3,156 +3,289 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Aula de Front-End</title>
+  <title>Portfólio de Projetos - Lucas Pacheco</title>
 
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
 
-  <!-- Bootstrap JS -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet" />
 
   <!-- Estilo personalizado -->
-  <link rel="stylesheet" href="style5.css" />
+  <style>
+    /* ---------- CONFIGURAÇÕES GERAIS ---------- */
+    body {
+      font-family: "Poppins", sans-serif;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      color: #f8f9fa;
+      min-height: 100vh;
+    }
+
+    h1, h2, h3 {
+      font-weight: 700;
+      text-shadow: 0 0 10px rgba(0,0,0,0.4);
+    }
+
+    section {
+      padding: 60px 0;
+    }
+
+    /* ---------- CABEÇALHO ---------- */
+    header {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255,255,255,0.2);
+    }
+
+    header h1 {
+      color: #fff;
+    }
+
+    /* ---------- BOTÕES ---------- */
+    a.btn {
+      border-radius: 30px;
+      transition: all 0.3s ease-in-out;
+      font-weight: 500;
+    }
+
+    a.btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 15px rgba(255,255,255,0.2);
+    }
+
+    .btn-outline-primary {
+      border-color: #00bfff;
+      color: #00bfff;
+    }
+
+    .btn-outline-primary:hover {
+      background: #00bfff;
+      color: #fff;
+    }
+
+    .btn-outline-success {
+      border-color: #00e676;
+      color: #00e676;
+    }
+
+    .btn-outline-success:hover {
+      background: #00e676;
+      color: #fff;
+    }
+
+    .btn-outline-secondary {
+      border-color: #a0aec0;
+      color: #a0aec0;
+    }
+
+    .btn-outline-secondary:hover {
+      background: #a0aec0;
+      color: #fff;
+    }
+
+    .btn-secondary {
+      background-color: #3949ab;
+      border: none;
+    }
+
+    .btn-secondary:hover {
+      background-color: #5c6bc0;
+    }
+
+    .btn-info {
+      background-color: #26c6da;
+      border: none;
+    }
+
+    .btn-info:hover {
+      background-color: #4dd0e1;
+    }
+
+    .btn-success {
+      background-color: #2ecc71;
+      border: none;
+    }
+
+    .btn-success:hover {
+      background-color: #58d68d;
+    }
+
+    /* ---------- SEÇÕES ---------- */
+    section h3 {
+      margin-bottom: 30px;
+      letter-spacing: 1px;
+    }
+
+    .categoria {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      padding: 40px 20px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    }
+
+    .categoria h3 {
+      color: #fff;
+      border-bottom: 2px solid rgba(255,255,255,0.2);
+      padding-bottom: 10px;
+      display: inline-block;
+    }
+
+    /* ---------- RODAPÉ ---------- */
+    footer {
+      background: rgba(0,0,0,0.3);
+      backdrop-filter: blur(5px);
+      color: #ccc;
+      padding: 20px 0;
+      font-size: 0.9rem;
+    }
+
+    footer strong {
+      color: #fff;
+    }
+
+    /* ---------- ANIMAÇÃO ---------- */
+    .fade-in {
+      opacity: 0;
+      animation: fadeIn 1.2s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
 </head>
+
 <body>
 
   <!-- Cabeçalho -->
-  <header class="bg-light py-4 shadow-sm">
-    <div class="container text-center">
-      <h1 class="display-5 fw-bold">
-        <span class="text-primary">JavaScript,</span> <span class="text-success"> Python</span> 
-      </h1>
+  <header class="py-4 shadow-sm text-center fade-in">
+    <div class="container">
+      <h1 class="display-5 fw-bold mb-2">🚀 Portfólio de Projetos</h1>
+      <p class="lead text-light">Desenvolvido por <strong>Lucas Pacheco</strong></p>
     </div>
   </header>
 
   <!-- Categorias -->
-  <section class="py-4 bg-white border-bottom">
-    <div class="container text-center">
-      <h2 class="mb-3">Categorias</h2>
+  <section class="text-center fade-in">
+    <div class="container">
+      <h2 class="mb-4">Escolha uma Categoria</h2>
       <div class="d-flex flex-wrap justify-content-center gap-3">
         <a href="#categoria-js" class="btn btn-outline-primary">JavaScript</a>
         <a href="#categoria-python" class="btn btn-outline-success">Python</a>
-        <a href="#categoria-html" class="btn btn-outline-secondary">HTML/CSS</a>
+        <a href="#categoria-react" class="btn btn-outline-secondary">React Native</a>
       </div>
     </div>
   </section>
 
-  <!-- Conteúdo principal -->
-  <main class="py-5">
+  <!-- React Native -->
+  <section id="categoria-react" class="fade-in">
+    <div class="container categoria">
+      <h3 class="text-info text-center">📱 Projetos em React Native</h3>
+      <div class="d-flex flex-wrap justify-content-center gap-2 mt-3">
+        <a href="https://snack.expo.dev/@lucas.pacheco/aluguel-de-patinetes---arapongas" class="btn btn-secondary">Patinetes Arapongas</a>
+        <a href="https://snack.expo.dev/@lucas.pacheco/jogo-da-memoria" class="btn btn-secondary">Jogo da Memória</a>
+        <a href="https://snack.expo.dev/@lucas.pacheco/controle-de-abastecimento-" class="btn btn-secondary">Abastecimento</a>
+        <a href="https://snack.expo.dev/@lucas.pacheco/locadora" class="btn btn-secondary">Locadora</a>
+        <a href="https://snack.expo.dev/@lucas.pacheco/petshop" class="btn btn-secondary">PetShop</a>
+        <a href="https://snack.expo.dev/@lucas.pacheco/playlist" class="btn btn-secondary">PlayList</a>
+        <a href="https://snack.expo.dev/@lucas.pacheco/-cafeteria" class="btn btn-secondary">Cafeteria</a>
+        <a href="https://snack.expo.dev/@lucas.pacheco/lanche" class="btn btn-secondary">Lanchonete</a>
+        <a href="https://snack.expo.dev/@lucas.pacheco/financeiro" class="btn btn-secondary">Finanças</a>
+        <a href="https://snack.expo.dev/@lucas.pacheco/km" class="btn btn-secondary">KM</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- JavaScript -->
+  <section id="categoria-js" class="fade-in">
+    <div class="container categoria">
+      <h3 class="text-warning text-center">💻 Projetos em JavaScript</h3>
+      <div class="d-flex flex-wrap justify-content-center gap-2 mt-3">
+        <a href="https://lc22052008.github.io/roblox-guh/index.html" class="btn btn-secondary"> HUB de Jogos</a>
+        <a href="car-jg.html" class="btn btn-secondary">carro-3d</a>
+        <a href="jogo-car.html" class="btn btn-secondary">carro-2d</a>
+        <a href="alunos.js" class="btn btn-info">Alunos</a>
+        <a href="aula18-02.js" class="btn btn-info">Aula 18-02</a>
+        <a href="calcularIMC.js" class="btn btn-info">Calcular IMC</a>
+        <a href="cliente.js" class="btn btn-info">Cliente</a>
+        <a href="cliente2.js" class="btn btn-info">Cliente 2</a>
+        <a href="datas.js" class="btn btn-info">Datas</a>
+        <a href="datas2.js" class="btn btn-info">Datas 2</a>
+        <a href="dividir.js" class="btn btn-info">Dividir</a>
+        <a href="escolha-numero.js" class="btn btn-info">Escolha Número</a>
+        <a href="Exemplolet-certo.js" class="btn btn-info">Let Certo</a>
+        <a href="exemplolet-erro.js" class="btn btn-info">Let Erro</a>
+        <a href="front.js" class="btn btn-info">Front</a>
+        <a href="Idade.js" class="btn btn-info">Idade</a>
+        <a href="jogo-carro.js" class="btn btn-info">Jogo Carro</a>
+        <a href="lista-array.js" class="btn btn-info">Lista Array</a>
+        <a href="menos.js" class="btn btn-info">Menos</a>
+        <a href="multiplicar.js" class="btn btn-info">Multiplicar</a>
+        <a href="salario.js" class="btn btn-info">Salário</a>
+        <a href="salario2.js" class="btn btn-info">Salário 2</a>
+        <a href="script.js" class="btn btn-info">Script</a>
+        <a href="simples.js" class="btn btn-info">Simples</a>
+        <a href="soma.js" class="btn btn-info">Soma</a>
+        <a href="teste-comand copy 4.js" class="btn btn-info">Teste Comando</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Python -->
+  <section id="categoria-python" class="fade-in">
+    <div class="container categoria">
+      <h3 class="text-success text-center">🐍 Projetos em Python</h3>
+      <div class="d-flex flex-wrap justify-content-center gap-2 mt-3">
+        <a href="Py/000.py" class="btn btn-success">ex000</a>
+        <a href="Py/005.py" class="btn btn-success">ex005</a>
+        <a href="Py/006.py" class="btn btn-success">006</a>
+        <a href="Py/atv1.py" class="btn btn-success">atv1</a>
+        <a href="Py/atv2.py" class="btn btn-success">atv2</a>
+        <a href="Py/C-D.py" class="btn btn-success">c-d</a>
+        <a href="Py/chute.py" class="btn btn-success">chute</a>
+        <a href="Py/chute2.py" class="btn btn-success">chute2</a>
+        <a href="Py/chute3.py" class="btn btn-success">chute3</a>
+        <a href="Py/conversao.py" class="btn btn-success">conversao</a>
+        <a href="Py/Ex00.py" class="btn btn-success">ex00</a>
+        <a href="Py/Ex001.py" class="btn btn-success">ex1</a>
+        <a href="Py/Ex002.py" class="btn btn-success">ex2</a>
+        <a href="Py/Ex003.py" class="btn btn-success">ex3</a>
+        <a href="Py/Ex004.py" class="btn btn-success">ex4</a>
+        <a href="Py/Ex005.py" class="btn btn-success">ex5</a>
+        <a href="Py/Ex006.py" class="btn btn-success">ex6</a>
+        <a href="Py/Ex007.py" class="btn btn-success">ex7</a>
+        <a href="Py/Ex008.py" class="btn btn-success">ex8</a>
+        <a href="Py/Ex009.py" class="btn btn-success">ex9</a>
+        <a href="Py/Ex010.py" class="btn btn-success">ex10</a>
+        <a href="Py/ex011.py" class="btn btn-success">ex11</a>
+        <a href="Py/ex012.py" class="btn btn-success">ex12</a>
+        <a href="Py/ex013.py" class="btn btn-success">ex13</a>
+        <a href="Py/ex014.py" class="btn btn-success">ex14</a>
+        <a href="Py/ex015.py" class="btn btn-success">ex15</a>
+        <a href="Py/EX016.py" class="btn btn-success">ex16</a>
+        <a href="Py/ex019-listra.py" class="btn btn-success">ex17</a>
+        <a href="Py/Ex019-N_int.py" class="btn btn-success">ex18</a>
+        <a href="Py/ex019-nome.py" class="btn btn-success">ex19</a>
+        <a href="Py/Ex020-jo.py" class="btn btn-success">ex20</a>
+        <a href="Py/EX021-NOF.py" class="btn btn-success">ex21</a>
+        <a href="Py/ex021-pong.py" class="btn btn-success">pong</a>
+        <a href="Py/EX023-pizza.py" class="btn btn-success">ex23</a>
+        <a href="Py/EX06-3.py" class="btn btn-success">ex06-3</a>
+        <a href="Py/fases.py" class="btn btn-success">ex-fases</a>
+        <a href="Py/idade-int.py" class="btn btn-success">ex-idade</a>
+        <a href="Py/idade-namor.py" class="btn btn-success">ex-namor</a>
+        <a href="Py/idd-homen.py" class="btn btn-success">ex-homem</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Rodapé -->
+  <footer class="text-center fade-in">
     <div class="container">
+      <small>© 2025 | Desenvolvido por <strong>Lucas Pacheco</strong> — Aula de DS 💡</small>
+    </div>
+  </footer>
 
-      <!-- Seção HTML/CSS/React -->
-      <section id="categoria-html" class="mb-5">
-        <h3 class="mb-4 text-secondary text-center">Projetos em React Native</h3>
-        <div class="d-flex flex-wrap justify-content-center gap-2">
-          <a href= "https://snack.expo.dev/@lucas.pacheco/aluguel-de-patinetes---arapongas" class="btn btn-secondary"> Patinetes Arapongas</a>
-          <a href= "https://snack.expo.dev/@lucas.pacheco/jogo-da-memoria" class="btn btn-secondary"> Jogo da Memòria</a>
-          <a href= "https://snack.expo.dev/@lucas.pacheco/controle-de-abastecimento-" class="btn btn-secondary"> Abastecimento</a>
-          <a href= "https://snack.expo.dev/@lucas.pacheco/locadora" class="btn btn-secondary"> Locadora</a>
-          <a href= "https://snack.expo.dev/@lucas.pacheco/petshop" class="btn btn-secondary"> PetShop</a>
-          <a href= "https://snack.expo.dev/@lucas.pacheco/playlist" class="btn btn-secondary"> PlayList</a>
-          <a href= "https://snack.expo.dev/@lucas.pacheco/-cafeteria" class="btn btn-secondary">Cafeteria</a>
-          <a href="https://snack.expo.dev/@lucas.pacheco/hello-js" class="btn btn-secondary">hello</a>
-          <a href="https://snack.expo.dev/@lucas.pacheco/lanche" class="btn btn-secondary">Lanchonete</a>
-          <a href="https://snack.expo.dev/@lucas.pacheco/financeiro" class="btn btn-secondary">finanças</a>
-          <a href="https://snack.expo.dev/@lucas.pacheco/km" class="btn btn-secondary">KM</a>
-          
-
-        </div>
-      </section>
-
-      <!-- Seção JavaScript -->
-      <section id="categoria-js" class="mb-5">
-        <h3 class="mb-4 text-primary text-center">Projetos em JavaScript</h3>
-        <div class="d-flex flex-wrap justify-content-center gap-2">
-          <a href="https://lc22052008.github.io/roblox-guh/index.html" class="btn btn-secondary"> HUB de Jogos</a>
-          <a href="car-jg.html" class="btn btn-secondary">carro-3d</a>
-          <a href="jogo-car.html" class="btn btn-secondary">carro-2d</a>
-          <a href="alunos.js" class="btn btn-info">Alunos</a>
-          <a href="aula18-02.js" class="btn btn-info">Aula 18-02</a>
-          <a href="calcularIMC.js" class="btn btn-info">Calcular IMC</a>
-          <a href="cliente.js" class="btn btn-info">Cliente</a>
-          <a href="cliente2.js" class="btn btn-info">Cliente 2</a>
-          <a href="datas.js" class="btn btn-info">Datas</a>
-          <a href="datas2.js" class="btn btn-info">Datas 2</a>
-          <a href="dividir.js" class="btn btn-info">Dividir</a>
-          <a href="escolha-numero.js" class="btn btn-info">Escolha Número</a>
-          <a href="Exemplolet-certo.js" class="btn btn-info">Let Certo</a>
-          <a href="exemplolet-erro.js" class="btn btn-info">Let Erro</a>
-          <a href="front.js" class="btn btn-info">Front</a>
-          <a href="Idade.js" class="btn btn-info">Idade</a>
-          <a href="jogo-carro.js" class="btn btn-info">Jogo Carro</a>
-          <a href="lista-array.js" class="btn btn-info">Lista Array</a>
-          <a href="menos.js" class="btn btn-info">Menos</a>
-          <a href="multiplicar.js" class="btn btn-info">Multiplicar</a>
-          <a href="salario.js" class="btn btn-info">Salário</a>
-          <a href="salario2.js" class="btn btn-info">Salário 2</a>
-          <a href="script.js" class="btn btn-info">Script</a>
-          <a href="simples.js" class="btn btn-info">Simples</a>
-          <a href="soma.js" class="btn btn-info">Soma</a>
-          <a href="teste-comand copy 4.js" class="btn btn-info">Teste Comando</a>
-        </div>
-      </section>
-
-      <!-- Seção Python -->
-      <section id="categoria-python">
-        <h3 class="mb-4 text-success text-center">Projetos em Python</h3>
-        <div class="d-flex flex-wrap justify-content-center gap-2">
-          <a href="Py/000.py" class="btn btn-success">ex000</a>
-          <a href="Py/005.py" class="btn btn-success">ex005</a>
-          <a href="Py/006.py" class="btn btn-success">006</a>
-          <a href="Py/atv1.py" class="btn btn-success">atv1</a>
-          <a href="Py/atv2.py" class="btn btn-success">atv2</a>
-          <a href="Py/C-D.py" class="btn btn-success">c-d</a>
-          <a href="Py/chute.py" class="btn btn-success">chute</a>
-          <a href="Py/chute2.py" class="btn btn-success">chute2</a>
-          <a href="Py/chute3.py" class="btn btn-success">chute3</a>
-          <a href="Py/conversao.py" class="btn btn-success">conversao</a>
-          <a href="Py/Ex00.py" class="btn btn-success">ex00</a>
-          <a href="Py/Ex001.py" class="btn btn-success">ex1</a>
-          <a href="Py/Ex002.py" class="btn btn-success">ex2</a>
-          <a href="Py/Ex003.py" class="btn btn-success">ex3</a>
-          <a href="Py/Ex004.py" class="btn btn-success">ex4</a>
-          <a href="Py/Ex005.py" class="btn btn-success">ex5</a>
-          <a href="Py/Ex006.py" class="btn btn-success">ex6</a>
-          <a href="Py/Ex007.py" class="btn btn-success">ex7</a>
-          <a href="Py/Ex008.py" class="btn btn-success">ex8</a>
-          <a href="Py/Ex009.py" class="btn btn-success">ex9</a>
-          <a href="Py/Ex010.py" class="btn btn-success">ex10</a>
-          <a href="Py/ex011.py" class="btn btn-success">ex11</a>
-          <a href="Py/ex012.py" class="btn btn-success">ex12</a>
-          <a href="Py/ex013.py" class="btn btn-success">ex13</a>
-          <a href="Py/ex014.py" class="btn btn-success">ex14</a>
-          <a href="Py/ex015.py" class="btn btn-success">ex15</a>
-          <a href="Py/EX016.py" class="btn btn-success">ex16</a>
-          <a href="Py/ex019-listra.py" class="btn btn-success">ex17</a>
-          <a href="Py/Ex019-N_int.py" class="btn btn-success">ex18</a>
-          <a href="Py/ex019-nome.py" class="btn btn-success">ex19</a>
-          <a href="Py/Ex020-jo.py" class="btn btn-success">ex20</a>
-          <a href="Py/EX021-NOF.py" class="btn btn-success">ex21</a>
-          <a href="Py/ex021-pong.py" class="btn btn-success">pong</a>
-          <a href="Py/EX023-pizza.py" class="btn btn-success">ex23</a>
-          <a href="Py/EX06-3.py" class="btn btn-success">ex06-3</a>
-          <a href="Py/fases.py" class="btn btn-success">ex-fases</a>
-          <a href="Py/idade-int.py" class="btn btn-success">ex-idade</a>
-          <a href="Py/idade-namor.py" class="btn btn-success">ex-namor</a>
-          <a href="Py/idd-homen.py" class="btn btn-success">ex-homem</a>
-
-        <h1></h1>
-
-          <footer class="bg-light text-center py-3 mt-5">
-            <small>© 2025 Aula de Ds | Desenvolvido por Aluno Lucas Pacheco</small>
-
-          </footer>
-
-
-
-
-
-
-
-
-
-
-
-
+</body>
+</html>
